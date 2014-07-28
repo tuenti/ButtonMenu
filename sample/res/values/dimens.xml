@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+	<dimen name="button_menu_height">48dip</dimen>
+	<dimen name="avatar_size">44dip</dimen>
+	<dimen name="main_margin">14dip</dimen>
+	<dimen name="second_margin">10dip</dimen>
+	<dimen name="third_margin">8dip</dimen>
+	<dimen name="title_text_size">16sp</dimen>
+	<dimen name="subtitle_text_size">12sp</dimen>
+	<dimen name="fourth_margin">4dip</dimen>
+</resources>

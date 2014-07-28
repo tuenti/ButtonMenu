@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+				android:layout_width="match_parent"
+				android:layout_height="match_parent">
+
+	<ImageView
+			android:id="@+id/iv_avatar"
+			style="@style/contact_image"/>
+
+	<TextView
+			android:id="@+id/tv_name"
+			android:layout_toRightOf="@id/iv_avatar"
+			style="@style/contact_name"/>
+
+	<TextView
+			android:id="@+id/tv_date"
+			android:layout_alignBaseline="@id/tv_name"
+			android:layout_toRightOf="@id/tv_name"
+			style="@style/contact_date"/>
+
+	<TextView
+			android:id="@+id/tv_last_message"
+			android:layout_below="@id/tv_name"
+			android:layout_toRightOf="@id/iv_avatar"
+			style="@style/contact_last_message"/>
+
+</RelativeLayout>

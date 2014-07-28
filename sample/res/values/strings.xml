@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+	<string name="app_name">Button Menu</string>
+	<string name="button_text_enable_disable_all">Enable/Disable</string>
+	<string name="button_text_enable_disable_photo">Enable/Disable photo ButtonVM</string>
+	<string name="button_text_change_icon">Change icon</string>
+	<string name="button_text_change_subtitle">Change subtitle</string>
+	<string name="photo_button_subtitle">Take a picture</string>
+	<string name="photo_button_second_subtitle">Contacts</string>
+</resources>

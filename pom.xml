@@ -1,0 +1,160 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+		 xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+
+	<name>ButtonMenu - Parent</name>
+	<description>Android Custom View created to work with button menus easily.</description>
+	<url>http://github.com/tuenti/ButtonMenu/</url>
+	<inceptionYear>2014</inceptionYear>
+	<organization>
+		<name>Tuenti Technologies S.L.</name>
+		<url>http://corporate.tuenti.com/es/dev/blog</url>
+	</organization>
+	<modules>
+		<module>library</module>
+		<module>sample</module>
+	</modules>
+
+	<groupId>com.tuenti.buttonmenu</groupId>
+	<artifactId>buttonmenu-parent</artifactId>
+	<version>1.0.1</version>
+	<packaging>pom</packaging>
+
+	<parent>
+		<groupId>org.sonatype.oss</groupId>
+		<artifactId>oss-parent</artifactId>
+		<version>7</version>
+	</parent>
+
+
+	<properties>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<junit.version>4.11</junit.version>
+		<android.version>4.1.1.4</android.version>
+		<robolectric.version>2.3</robolectric.version>
+		<renderers.version>1.1.1</renderers.version>
+		<picasso.version>2.1.1</picasso.version>
+		<circleimageview.version>1.1.1</circleimageview.version>
+		<library.version>2.4.0</library.version>
+		<mockito-all.version>1.9.5</mockito-all.version>
+	</properties>
+
+	<dependencyManagement>
+		<dependencies>
+
+			<dependency>
+				<groupId>com.tuenti.buttonmenu</groupId>
+				<artifactId>library</artifactId>
+				<version>${project.version}</version>
+				<type>jar</type>
+			</dependency>
+
+			<dependency>
+				<groupId>junit</groupId>
+				<artifactId>junit</artifactId>
+				<version>${junit.version}</version>
+				<scope>test</scope>
+			</dependency>
+
+			<dependency>
+				<groupId>com.google.android</groupId>
+				<artifactId>android</artifactId>
+				<version>${android.version}</version>
+				<scope>provided</scope>
+			</dependency>
+
+			<dependency>
+				<groupId>com.google.android</groupId>
+				<artifactId>android-test</artifactId>
+				<version>${android.version}</version>
+				<scope>test</scope>
+			</dependency>
+
+			<dependency>
+				<groupId>org.robolectric</groupId>
+				<artifactId>robolectric</artifactId>
+				<version>${robolectric.version}</version>
+				<scope>test</scope>
+			</dependency>
+
+			<dependency>
+				<groupId>org.mockito</groupId>
+				<artifactId>mockito-all</artifactId>
+				<version>${mockito-all.version}</version>
+			</dependency>
+
+			<dependency>
+				<groupId>com.github.pedrovgs</groupId>
+				<artifactId>renderers</artifactId>
+				<version>${renderers.version}</version>
+			</dependency>
+
+			<dependency>
+				<groupId>com.squareup.picasso</groupId>
+				<artifactId>picasso</artifactId>
+				<version>${picasso.version}</version>
+			</dependency>
+
+			<dependency>
+				<groupId>com.nineoldandroids</groupId>
+				<artifactId>library</artifactId>
+				<version>${library.version}</version>
+			</dependency>
+
+		</dependencies>
+	</dependencyManagement>
+
+	<dependencies>
+		<dependency>
+			<groupId>com.google.android</groupId>
+			<artifactId>android</artifactId>
+		</dependency>
+	</dependencies>
+
+	<build>
+		<pluginManagement>
+			<plugins>
+				<plugin>
+					<groupId>com.jayway.maven.plugins.android.generation2</groupId>
+					<artifactId>android-maven-plugin</artifactId>
+					<version>3.8.2</version>
+					<configuration>
+						<sdk>
+							<platform>18</platform>
+						</sdk>
+						<undeployBeforeDeploy>true</undeployBeforeDeploy>
+					</configuration>
+				</plugin>
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-gpg-plugin</artifactId>
+					<executions>
+						<execution>
+							<id>sign-artifacts</id>
+							<phase>verify</phase>
+							<goals>
+								<goal>sign</goal>
+							</goals>
+						</execution>
+					</executions>
+				</plugin>
+			</plugins>
+		</pluginManagement>
+	</build>
+
+	<licenses>
+		<license>
+			<name>Apache 2.0</name>
+			<url>http://www.apache.org/licenses/LICENSE-2.0.txt</url>
+		</license>
+	</licenses>
+
+	<scm>
+		<url>https://github.com/tuenti/ButtonMenu/</url>
+		<connection>scm:git:git://github.com/tuenti/ButtonMenu.git</connection>
+		<developerConnection>scm:git:git@github.com:tuenti/ButtonMenu.git</developerConnection>
+		<tag>1.0.0</tag>
+	</scm>
+
+</project>

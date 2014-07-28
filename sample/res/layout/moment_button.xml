@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<ImageButton xmlns:android="http://schemas.android.com/apk/res/android"
+			 android:id="@+id/moment"
+			 style="@style/button_menu_element.moment">>
+
+</ImageButton>

@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+				android:layout_width="match_parent"
+				android:layout_height="match_parent">
+
+	<LinearLayout
+			android:orientation="vertical"
+			android:layout_width="fill_parent"
+			android:layout_height="fill_parent">
+
+		<Button
+				android:id="@+id/bt_enable_disable_all"
+				android:layout_width="match_parent"
+				android:layout_height="wrap_content"
+				android:text="@string/button_text_enable_disable_all"/>
+
+
+		<Button
+				android:id="@+id/bt_enable_disable_photo"
+				android:layout_width="match_parent"
+				android:layout_height="wrap_content"
+				android:text="@string/button_text_enable_disable_photo"/>
+
+
+		<Button
+				android:id="@+id/bt_change_icon"
+				android:layout_width="match_parent"
+				android:layout_height="wrap_content"
+				android:text="@string/button_text_change_icon"/>
+
+		<Button
+				android:id="@+id/bt_change_subtitle"
+				android:layout_width="match_parent"
+				android:layout_height="wrap_content"
+				android:text="@string/button_text_change_subtitle"/>
+
+	</LinearLayout>
+
+	<com.tuenti.buttonmenu.ButtonMenu
+			android:id="@+id/button_menu"
+			style="@style/button_menu"/>
+
+</RelativeLayout>

@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+	<style name="AppTheme" parent="android:Theme.Light.NoTitleBar">
+
+	</style>
+
+	<style name="button_menu">
+		<item name="android:layout_height">@dimen/button_menu_height</item>
+		<item name="android:layout_width">fill_parent</item>
+		<item name="android:layout_alignParentBottom">true</item>
+	</style>
+
+	<style name="button_menu_element">
+		<item name="android:layout_height">fill_parent</item>
+		<item name="android:layout_width">fill_parent</item>
+		<item name="android:layout_centerHorizontal">true</item>
+		<item name="android:layout_centerVertical">true</item>
+		<item name="android:background">@drawable/button_menu</item>
+	</style>
+
+	<style name="button_menu_element.contact">
+		<item name="android:src">@drawable/contact_icon</item>
+	</style>
+
+	<style name="button_menu_element.moment">
+		<item name="android:src">@drawable/moment_icon</item>
+	</style>
+	<style name="button_menu_element.photo">
+		<item name="android:src">@drawable/photo_icon</item>
+	</style>
+
+	<style name="button_menu_element.photo.with_subtitle">
+		<item name="android:drawableTop">@drawable/photo_icon</item>
+		<item name="android:text">@string/photo_button_subtitle</item>
+		<item name="android:textColor">@color/white</item>
+		<item name="android:paddingTop">@dimen/fourth_margin</item>
+	</style>
+
+
+	<style name="contact_image">
+		<item name="android:layout_width">@dimen/avatar_size</item>
+		<item name="android:layout_height">@dimen/avatar_size</item>
+		<item name="android:layout_margin">@dimen/main_margin</item>
+		<item name="android:layout_alignParentLeft">true</item>
+		<item name="android:layout_centerVertical">true</item>
+	</style>
+
+	<style name="contact_name">
+		<item name="android:layout_width">wrap_content</item>
+		<item name="android:layout_height">wrap_content</item>
+		<item name="android:layout_marginTop">@dimen/third_margin</item>
+		<item name="android:textStyle">bold</item>
+		<item name="android:textSize">@dimen/title_text_size</item>
+	</style>
+
+	<style name="contact_date">
+		<item name="android:layout_width">wrap_content</item>
+		<item name="android:layout_height">wrap_content</item>
+		<item name="android:layout_marginLeft">@dimen/second_margin</item>
+		<item name="android:textSize">@dimen/subtitle_text_size</item>
+	</style>
+
+	<style name="contact_last_message">
+		<item name="android:layout_width">wrap_content</item>
+		<item name="android:layout_height">wrap_content</item>
+		<item name="android:layout_marginRight">@dimen/second_margin</item>
+		<item name="android:ellipsize">end</item>
+		<item name="android:singleLine">true</item>
+	</style>
+
+</resources>
