@@ -5,7 +5,7 @@
 	<parent>
 		<groupId>com.tuenti.buttonmenu</groupId>
 		<artifactId>buttonmenu-parent</artifactId>
-		<version>1.0.2</version>
+		<version>1.0.3-SNAPSHOT</version>
 	</parent>
 
 	<artifactId>library</artifactId>
