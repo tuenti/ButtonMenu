@@ -1,4 +1,4 @@
-Button Menu[![Build Status](https://travis-ci.org/tuenti/ButtonMenu.svg?branch=master)](https://travis-ci.org/tuenti/ButtonMenu)
+Button Menu
 ===========
 
 ButtonMenu is an Android library created to build user interfaces based on buttons. This library has been implemented
@@ -19,7 +19,7 @@ Screenshots
 Download
 --------
 
-Download the project, compile it using ``mvn clean install`` import ``buttonmenu-1.0.0.jar`` into your project.
+Download the project, compile it using ``mvn clean install`` import ``buttonmenu-1.0.1.jar`` into your project.
 
 This library will be available in Maven Central asap.
 
