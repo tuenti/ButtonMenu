@@ -21,7 +21,23 @@ Download
 
 Download the project, compile it using ``mvn clean install`` import ``buttonmenu-1.0.1.jar`` into your project.
 
-This library will be available in Maven Central asap.
+Or declare it into your pom.xml
+
+```xml
+<dependency>
+    <groupId>com.tuenti.buttonmenu</groupId>
+    <artifactId>library</artifactId>
+    <version>1.0.5</version>
+</dependency>
+```
+
+
+Or into your build.gradle
+```groovy
+dependencies{
+    compile 'com.tuenti.buttonmenu:library:1.0.5'
+}
+```
 
 
 Usage
