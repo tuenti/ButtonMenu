@@ -174,7 +174,7 @@ public class ButtonMenuTest {
 	}
 
 	@Test
-	public void shouldReleaseButtonRemoveingButtons() {
+	public void shouldReleaseButtonRemovingButtons() {
 		initializeButtonMenu();
 
 		buttonMenu.release();
