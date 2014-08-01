@@ -34,10 +34,10 @@ public class ButtonWithMutableSubjectAndResourceVM extends SimpleButtonVM implem
 
 
 	public ButtonWithMutableSubjectAndResourceVM(int layoutId, boolean enabled,
-			int clickbableResId, int[]
+			int clickableResId, int[]
 			enableDisableResIds, ButtonCommand actionCommand, int imageResourceId,
 			int subjectResourceId) {
-		super(layoutId, enabled, clickbableResId, enableDisableResIds, actionCommand);
+		super(layoutId, enabled, clickableResId, enableDisableResIds, actionCommand);
 		this.imageResourceId = imageResourceId;
 		this.subjectResourceId = subjectResourceId;
 	}

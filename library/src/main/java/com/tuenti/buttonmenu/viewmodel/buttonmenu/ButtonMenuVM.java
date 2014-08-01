@@ -22,7 +22,7 @@ import com.tuenti.buttonmenu.viewmodel.button.ButtonVM;
 
 
 /**
- * Interface created to represent a ButonMenu view model with some ButtonVM inside.
+ * Interface created to represent a ButtonMenu view model with some ButtonVM inside.
  * This view model supports the addition and removal of ButtonVM items.
  *
  * @author "Pedro Vicente Gómez Sánchez" <pgomez@tuenti.com>

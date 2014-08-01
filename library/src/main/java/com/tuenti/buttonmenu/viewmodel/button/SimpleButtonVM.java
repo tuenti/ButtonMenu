@@ -63,9 +63,9 @@ public class SimpleButtonVM implements ButtonVM {
 
 	@Override
 	public void enable() {
-		final boolean enabed = true;
-		setEnabled(enabed);
-		notifyIsEnabledListener(enabed);
+		final boolean enabled = true;
+		setEnabled(enabled);
+		notifyIsEnabledListener(enabled);
 	}
 
 	@Override
