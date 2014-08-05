@@ -31,11 +31,13 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.LinearLayout;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import com.tuenti.buttonmenu.viewmodel.button.ButtonCommand;
 import com.tuenti.buttonmenu.viewmodel.button.ButtonVM;
 import com.tuenti.buttonmenu.viewmodel.button.ButtonVMListener;
+import com.tuenti.buttonmenu.viewmodel.button.ButtonWithProgressVM;
 import com.tuenti.buttonmenu.viewmodel.button.CounterButtonVM;
 import com.tuenti.buttonmenu.viewmodel.button.MutableResourceButtonVM;
 import com.tuenti.buttonmenu.viewmodel.button.MutableSubjectButtonVM;
@@ -157,6 +159,13 @@ public class ButtonMenu extends LinearLayout implements ButtonVMListener, Button
 		remove(buttonVM);
 	}
 
+	@Override
+	public void onProgressValueChanged(boolean loading, ButtonWithProgressVM buttonVM) {
+		View view = getViewForViewModel(buttonVM);
+		int imageId = buttonVM.getImage();
+		int progressId = buttonVM.getProgress();
+		renderProgress(view, imageId, progressId, loading);
+	}
 
 	private void renderButtonMenuVM() {
 		if (buttonMenuVM != null && buttonMenuVM.getButtonVMs() != null) {
@@ -313,7 +322,20 @@ public class ButtonMenu extends LinearLayout implements ButtonVMListener, Button
 		counter.setText(newCounter);
 	}
 
-	private View getViewForViewModel(final ButtonVM viewModel) {
+	private void renderProgress(View view, int viewResourceId, int progressResourceId,
+			boolean show) {
+		View image = view.findViewById(viewResourceId);
+		ProgressBar progressBar = (ProgressBar) view.findViewById(progressResourceId);
+		if (show) {
+			image.setVisibility(View.GONE);
+			progressBar.setVisibility(View.VISIBLE);
+		} else {
+			progressBar.setVisibility(View.GONE);
+			image.setVisibility(View.VISIBLE);
+		}
+	}
+
+    private View getViewForViewModel(final ButtonVM viewModel) {
 		View view = null;
 		Set<Entry<ButtonVM, View>> entries = items.entrySet();
 		for (Entry<ButtonVM, View> entry : entries) {

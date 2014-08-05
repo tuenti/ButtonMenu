@@ -34,6 +34,18 @@
 				android:layout_height="wrap_content"
 				android:text="@string/button_text_change_subtitle"/>
 
+        <Button
+				android:id="@+id/bt_start_progress"
+				android:layout_width="match_parent"
+				android:layout_height="wrap_content"
+				android:text="@string/button_text_start_progress" />
+
+        <Button
+				android:id="@+id/bt_stop_progress"
+				android:layout_width="match_parent"
+				android:layout_height="wrap_content"
+				android:text="@string/button_text_stop_progress" />
+
 	</LinearLayout>
 
 	<com.tuenti.buttonmenu.ButtonMenu

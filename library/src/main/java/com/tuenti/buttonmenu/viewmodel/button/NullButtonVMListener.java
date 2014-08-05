@@ -42,4 +42,9 @@ class NullButtonVMListener implements ButtonVMListener {
 	public void onSubjectChanged(String subject, MutableSubjectButtonVM buttonVm) {
 		//Empty
 	}
+
+	@Override
+	public void onProgressValueChanged(boolean view, ButtonWithProgressVM buttonVm) {
+		//Empty
+	}
 }
