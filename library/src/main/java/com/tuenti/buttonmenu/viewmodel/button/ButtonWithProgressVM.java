@@ -40,13 +40,13 @@ public class ButtonWithProgressVM extends SimpleButtonVM implements ProgressButt
 	@Override
 	public void startProgress() {
 		notifyShowProgress();
-        loading = true;
+		loading = true;
 	}
 
 	@Override
 	public void finishProgress() {
 		notifyCloseProgress();
-        loading = false;
+		loading = false;
 	}
 
 	@Override
@@ -59,12 +59,12 @@ public class ButtonWithProgressVM extends SimpleButtonVM implements ProgressButt
 		return imageViewId;
 	}
 
-    @Override
-    public boolean getProgressLoading() {
+		@Override
+	public boolean getProgressLoading() {
         return loading;
     }
 
-    private void notifyShowProgress() {
+	private void notifyShowProgress() {
 		ButtonVMListener buttonVMListener = getListener();
 
 		buttonVMListener.onProgressValueChanged(true, this);

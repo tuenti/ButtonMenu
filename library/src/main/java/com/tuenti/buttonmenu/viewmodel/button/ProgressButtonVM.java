@@ -47,9 +47,9 @@ public interface ProgressButtonVM extends ButtonVM {
 	 */
 	int getImage();
 
-    /**
-     * @return the state of ProgressBar.
-     */
-    boolean getProgressLoading();
+	/**
+	 * @return the state of ProgressBar.
+	 */
+	boolean getProgressLoading();
 
 }
