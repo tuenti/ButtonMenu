@@ -36,6 +36,7 @@ import android.widget.TextView;
 import com.tuenti.buttonmenu.viewmodel.button.ButtonCommand;
 import com.tuenti.buttonmenu.viewmodel.button.ButtonVM;
 import com.tuenti.buttonmenu.viewmodel.button.ButtonVMListener;
+import com.tuenti.buttonmenu.viewmodel.button.ButtonWithProgressVM;
 import com.tuenti.buttonmenu.viewmodel.button.CounterButtonVM;
 import com.tuenti.buttonmenu.viewmodel.button.MutableResourceButtonVM;
 import com.tuenti.buttonmenu.viewmodel.button.MutableSubjectButtonVM;
@@ -155,6 +156,14 @@ public class ButtonMenu extends LinearLayout implements ButtonVMListener, Button
 	@Override
 	public void onButtonVMRemoved(final ButtonVM buttonVM) {
 		remove(buttonVM);
+	}
+
+	@Override
+	public void onProgressValueChanged(boolean loading, ButtonWithProgressVM buttonVM) {
+		View view = getViewForViewModel(buttonVM);
+		int imageId = buttonVM.getImage();
+		int progressId = buttonVM.getProgress();
+		renderProgress(view, imageId, progressId, loading);
 	}
 
 
@@ -313,7 +322,15 @@ public class ButtonMenu extends LinearLayout implements ButtonVMListener, Button
 		counter.setText(newCounter);
 	}
 
-	private View getViewForViewModel(final ButtonVM viewModel) {
+	private void renderProgress(View view, int viewResourceId, int progressResourceId,
+			boolean show) {
+		View image = view.findViewById(viewResourceId);
+		View progressBar = view.findViewById(progressResourceId);
+		image.setVisibility(show ? View.GONE : View.VISIBLE);
+		progressBar.setVisibility(show ? View.VISIBLE : View.GONE);
+	}
+
+    private View getViewForViewModel(final ButtonVM viewModel) {
 		View view = null;
 		Set<Entry<ButtonVM, View>> entries = items.entrySet();
 		for (Entry<ButtonVM, View> entry : entries) {
