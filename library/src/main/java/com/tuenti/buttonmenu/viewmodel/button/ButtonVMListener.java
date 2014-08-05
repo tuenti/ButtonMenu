@@ -56,11 +56,11 @@ public interface ButtonVMListener {
 	 */
 	void onSubjectChanged(final String subject, final MutableSubjectButtonVM buttonVm);
 
-    /**
-     * Method executed when the progress value change in the view model.
-     *
-     * @param loading  new state of progressbar loading
-     * @param buttonVm that has suffer the change.
-     */
-    void onProgressValueChanged(boolean loading, final ButtonWithProgressVM buttonVm);
+	/**
+	 * Method executed when the progress value change in the view model.
+	 *
+	 * @param loading  new state of progressbar loading
+	 * @param buttonVm that has suffer the change.
+	 */
+	void onProgressValueChanged(boolean loading, final ButtonWithProgressVM buttonVm);
 }

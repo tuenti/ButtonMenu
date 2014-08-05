@@ -42,7 +42,6 @@
 		<item name="android:paddingTop">@dimen/fourth_margin</item>
 	</style>
 
-
 	<style name="contact_image">
 		<item name="android:layout_width">@dimen/avatar_size</item>
 		<item name="android:layout_height">@dimen/avatar_size</item>

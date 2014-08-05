@@ -36,7 +36,6 @@ public class SecondActivity extends Activity {
 	private Button bt_change_icon;
 	private Button bt_change_subtitle;
 	private Button bt_start_progress;
-	private Button bt_stop_progress;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -54,7 +53,6 @@ public class SecondActivity extends Activity {
 		bt_change_icon = (Button) findViewById(R.id.bt_change_icon);
 		bt_change_subtitle = (Button) findViewById(R.id.bt_change_subtitle);
 		bt_start_progress = (Button) findViewById(R.id.bt_start_progress);
-		bt_stop_progress = (Button) findViewById(R.id.bt_stop_progress);
 	}
 
 	private void initializeButtonMenu() {
@@ -115,18 +113,17 @@ public class SecondActivity extends Activity {
 				/*
 				 * Start progress loading of one element inside the ButtonVM implementation
 				 */
-				buttonMenuVM.startProgress();
+				if(buttonMenuVM.isLoading()) {
+					buttonMenuVM.closeLoading();
+					bt_start_progress.setText(getResources().getString(R.string.
+							button_text_start_progress));
+				} else {
+					buttonMenuVM.showLoading();
+					bt_start_progress.setText(getResources().getString(R.string
+							.button_text_stop_progress));
+				}
 			}
 		});
 
-		bt_stop_progress.setOnClickListener(new OnClickListener() {
-			@Override
-			public void onClick(View v) {
-				/*
-				 * Finish progress loading of one element inside the ButtonVM implementation
-				 */
-				buttonMenuVM.finishProgress();
-			}
-		});
 	}
 }

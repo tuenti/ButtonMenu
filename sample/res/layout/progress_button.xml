@@ -7,7 +7,7 @@
 		android:id="@+id/refresh"
 		style="@style/button_menu_element.loading" />
 
-    <ProgressBar
+	<ProgressBar
 		android:id="@+id/progress"
 		style="@style/button_menu_element"
 		android:visibility="gone" />

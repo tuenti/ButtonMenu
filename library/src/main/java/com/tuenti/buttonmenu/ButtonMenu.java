@@ -31,7 +31,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.LinearLayout;
-import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import com.tuenti.buttonmenu.viewmodel.button.ButtonCommand;
@@ -166,6 +165,7 @@ public class ButtonMenu extends LinearLayout implements ButtonVMListener, Button
 		int progressId = buttonVM.getProgress();
 		renderProgress(view, imageId, progressId, loading);
 	}
+
 
 	private void renderButtonMenuVM() {
 		if (buttonMenuVM != null && buttonMenuVM.getButtonVMs() != null) {
@@ -325,14 +325,9 @@ public class ButtonMenu extends LinearLayout implements ButtonVMListener, Button
 	private void renderProgress(View view, int viewResourceId, int progressResourceId,
 			boolean show) {
 		View image = view.findViewById(viewResourceId);
-		ProgressBar progressBar = (ProgressBar) view.findViewById(progressResourceId);
-		if (show) {
-			image.setVisibility(View.GONE);
-			progressBar.setVisibility(View.VISIBLE);
-		} else {
-			progressBar.setVisibility(View.GONE);
-			image.setVisibility(View.VISIBLE);
-		}
+		View progressBar = view.findViewById(progressResourceId);
+		image.setVisibility(show ? View.GONE : View.VISIBLE);
+		progressBar.setVisibility(show ? View.VISIBLE : View.GONE);
 	}
 
     private View getViewForViewModel(final ButtonVM viewModel) {
