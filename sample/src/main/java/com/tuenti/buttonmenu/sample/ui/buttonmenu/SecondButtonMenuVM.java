@@ -39,7 +39,6 @@ public class SecondButtonMenuVM extends SimpleButtonMenuVM {
 	 */
 	private final ButtonVM moment;
 	private final ButtonWithMutableSubjectAndResourceVM photo;
-	private final ButtonVM contact;
 	private final ButtonWithProgressVM loading;
 
 	public SecondButtonMenuVM(Context context) {
@@ -52,9 +51,6 @@ public class SecondButtonMenuVM extends SimpleButtonMenuVM {
 				new int[]{R.id.photo}, new ShowToastCommand(context, "Photo button clicked"), R.id.photo,
 				R.id.photo);
 
-		contact = new SimpleButtonVM(R.layout.contact_button, R.id.contact, new ShowToastCommand(context,
-				"Contact button clicked"));
-
 		loading = new ButtonWithProgressVM(R.layout.progress_button, true,
 				R.id.refresh, new int[] { R.id.refresh, R.id.progress },
 				new ShowToastCommand(context,"Progress button clicked"), R.id.refresh,
@@ -62,7 +58,6 @@ public class SecondButtonMenuVM extends SimpleButtonMenuVM {
 
 		addItem(moment);
 		addItem(photo);
-		addItem(contact);
 		addItem(loading);
 	}
 

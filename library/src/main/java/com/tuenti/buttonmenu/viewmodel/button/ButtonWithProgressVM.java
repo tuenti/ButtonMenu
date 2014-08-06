@@ -26,7 +26,7 @@ public class ButtonWithProgressVM extends SimpleButtonVM implements ProgressButt
 
 	private int imageViewId;
 	private int progressViewId;
-    private boolean loading;
+	private boolean loading;
 
 	public ButtonWithProgressVM(int layoutId, boolean enabled, int clickableResId,
 			int[] enableDisableResIds, ButtonCommand actionCommand, int imageViewId,
@@ -34,7 +34,7 @@ public class ButtonWithProgressVM extends SimpleButtonVM implements ProgressButt
 		super(layoutId, enabled, clickableResId, enableDisableResIds, actionCommand);
 		this.imageViewId = imageViewId;
 		this.progressViewId = progressBarId;
-        this.loading = false;
+		this.loading = false;
     }
 
 	@Override
@@ -59,14 +59,13 @@ public class ButtonWithProgressVM extends SimpleButtonVM implements ProgressButt
 		return imageViewId;
 	}
 
-		@Override
+	@Override
 	public boolean getProgressLoading() {
         return loading;
     }
 
 	private void notifyShowProgress() {
 		ButtonVMListener buttonVMListener = getListener();
-
 		buttonVMListener.onProgressValueChanged(true, this);
 	}
 
