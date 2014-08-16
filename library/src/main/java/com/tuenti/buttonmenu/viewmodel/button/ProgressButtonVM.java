@@ -47,7 +47,6 @@ public interface ProgressButtonVM extends ButtonVM {
 	int getImage();
 
 	/**
-<<<<<<< HEAD
 	 * @return the state of loading of ProgressBar.
 	 */
 	boolean isLoading();
