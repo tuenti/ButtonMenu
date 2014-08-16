@@ -77,7 +77,7 @@ public class SecondButtonMenuVM extends SimpleButtonMenuVM {
 		if (photo.getImageResourceId() == R.drawable.photo_icon) {
 			photo.setImageResourceId(R.drawable.contact_icon);
 		} else {
-			photo.setImageResourceId(R.drawable.photo_icon);
+		 	photo.setImageResourceId(R.drawable.photo_icon);
 		}
 	}
 

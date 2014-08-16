@@ -50,5 +50,4 @@ public interface ProgressButtonVM extends ButtonVM {
 	 * @return the state of loading of ProgressBar.
 	 */
 	boolean isLoading();
-
 }

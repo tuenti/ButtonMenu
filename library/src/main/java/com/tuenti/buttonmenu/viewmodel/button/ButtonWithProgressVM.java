@@ -41,12 +41,14 @@ public class ButtonWithProgressVM extends SimpleButtonVM implements ProgressButt
 	public void showLoading() {
 		loading = true;
 		notifyShowProgress();
+		loading = true;
 	}
 
 	@Override
 	public void closeLoading() {
 		loading = false;
 		notifyCloseProgress();
+		loading = false;
 	}
 
 	@Override
@@ -61,7 +63,7 @@ public class ButtonWithProgressVM extends SimpleButtonVM implements ProgressButt
 
 	@Override
 	public boolean isLoading() {
-        return loading;
+		return loading;
     }
 
 	private void notifyShowProgress() {
