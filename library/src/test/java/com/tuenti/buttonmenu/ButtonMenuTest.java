@@ -19,6 +19,7 @@ package com.tuenti.buttonmenu;
 import java.util.LinkedList;
 import java.util.List;
 
+import com.tuenti.buttonmenu.viewmodel.button.ButtonWithProgressVM;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -60,8 +61,10 @@ public class ButtonMenuTest {
 
 	private ButtonMenu buttonMenu;
 	private ButtonMenuVM simpleButtonVM;
+	private ButtonMenuVM buttonMenuVMWithProgress;
 	private ButtonMenuVM buttonMenuVMWithCounter;
 	private ButtonWithCounterVM buttonVMWithCounter;
+	private ButtonWithProgressVM buttonVMWithProgress;
 
 	@Mock
 	private ButtonCommand mockedButtonCommand1;
@@ -83,6 +86,11 @@ public class ButtonMenuTest {
 		buttonVMWithCounter = new ButtonWithCounterVM(android.R.layout.simple_list_item_1,
 				true, android.R.id.text1, new int[]{android.R.id.text1}, null, ANY_COUNTER_VALUE, android.R.id.text1);
 		buttonMenuVMWithCounter = new SimpleButtonMenuVM(buttonVMWithCounter);
+
+		buttonVMWithProgress = new ButtonWithProgressVM(  android.R.layout.simple_expandable_list_item_2, true,
+				android.R.id.text1, new int[] { android.R.id.text1, android.R.id.text2 },
+				mockedButtonCommand1, android.R.id.text1,android.R.id.text2);
+		buttonMenuVMWithProgress = new SimpleButtonMenuVM(buttonVMWithProgress);
 	}
 
 	@Test
@@ -206,6 +214,24 @@ public class ButtonMenuTest {
 
 	private void initializeButtonMenu() {
 		initializeButtonMenuWithButtonMenuVM(simpleButtonVM);
+	}
+
+	@Test
+	public void shouldUpdateProgressValue() {
+		initializeButtonMenuWithButtonMenuVM(buttonMenuVMWithProgress);
+
+		buttonVMWithProgress.showLoading();
+
+		assertTrue(buttonVMWithProgress.isLoading());
+	}
+
+	@Test
+	public void shouldUpdateProgressCloseValue() {
+		initializeButtonMenuWithButtonMenuVM(buttonMenuVMWithProgress);
+
+		buttonVMWithProgress.closeLoading();
+
+		assertFalse(buttonVMWithProgress.isLoading());
 	}
 
 	private void initializeButtonMenuWithButtonMenuVM(ButtonMenuVM buttonMenuVM) {

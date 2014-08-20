@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+			android:layout_width="match_parent"
+			android:layout_height="match_parent">
+
+	<ImageButton xmlns:android="http://schemas.android.com/apk/res/android"
+		android:id="@+id/refresh"
+		style="@style/button_menu_element.loading" />
+
+	<ProgressBar
+		android:id="@+id/progress"
+		style="@style/button_menu_element"
+		android:visibility="gone" />
+
+</LinearLayout>

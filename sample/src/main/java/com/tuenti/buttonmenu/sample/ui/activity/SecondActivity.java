@@ -35,6 +35,7 @@ public class SecondActivity extends Activity {
 	private Button bt_enable_disable_photo;
 	private Button bt_change_icon;
 	private Button bt_change_subtitle;
+	private Button bt_start_progress;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -51,6 +52,7 @@ public class SecondActivity extends Activity {
 		bt_enable_disable_photo = (Button) findViewById(R.id.bt_enable_disable_photo);
 		bt_change_icon = (Button) findViewById(R.id.bt_change_icon);
 		bt_change_subtitle = (Button) findViewById(R.id.bt_change_subtitle);
+		bt_start_progress = (Button) findViewById(R.id.bt_start_progress);
 	}
 
 	private void initializeButtonMenu() {
@@ -104,5 +106,24 @@ public class SecondActivity extends Activity {
 				buttonMenuVM.changePhotoIconSubtitle();
 			}
 		});
+
+		bt_start_progress.setOnClickListener(new OnClickListener() {
+			@Override
+			public void onClick(View v) {
+				/*
+				 * Start progress loading of one element inside the ButtonVM implementation
+				 */
+				if(buttonMenuVM.isLoading()) {
+					buttonMenuVM.closeLoading();
+					bt_start_progress.setText(getResources().getString(R.string.
+							button_text_start_progress));
+				} else {
+					buttonMenuVM.showLoading();
+					bt_start_progress.setText(getResources().getString(R.string
+							.button_text_stop_progress));
+				}
+			}
+		});
+
 	}
 }

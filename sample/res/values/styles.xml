@@ -30,13 +30,17 @@
 		<item name="android:src">@drawable/photo_icon</item>
 	</style>
 
+	<style name="button_menu_element.loading">
+		<item name="android:src">@drawable/refresh_icon</item>
+	</style>
+
+
 	<style name="button_menu_element.photo.with_subtitle">
 		<item name="android:drawableTop">@drawable/photo_icon</item>
 		<item name="android:text">@string/photo_button_subtitle</item>
 		<item name="android:textColor">@color/white</item>
 		<item name="android:paddingTop">@dimen/fourth_margin</item>
 	</style>
-
 
 	<style name="contact_image">
 		<item name="android:layout_width">@dimen/avatar_size</item>
