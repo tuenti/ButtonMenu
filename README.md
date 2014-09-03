@@ -27,7 +27,7 @@ Or declare it into your pom.xml
 <dependency>
     <groupId>com.tuenti.buttonmenu</groupId>
     <artifactId>library</artifactId>
-    <version>1.0.5</version>
+    <version>1.0.7</version>
 </dependency>
 ```
 
@@ -35,7 +35,7 @@ Or declare it into your pom.xml
 Or into your build.gradle
 ```groovy
 dependencies{
-    compile 'com.tuenti.buttonmenu:library:1.0.5'
+    compile 'com.tuenti.buttonmenu:library:1.0.7'
 }
 ```
 
