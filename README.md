@@ -19,7 +19,7 @@ Screenshots
 Download
 --------
 
-Download the project, compile it using ``mvn clean install`` import ``buttonmenu-1.0.1.jar`` into your project.
+Download the project, compile it using ``mvn clean install`` import ``buttonmenu-1.0.7.jar`` into your project.
 
 Or declare it into your pom.xml
 
