@@ -16,10 +16,19 @@
 
 package com.tuenti.buttonmenu;
 
-import java.util.LinkedList;
-import java.util.List;
+import android.view.View;
+import android.widget.LinearLayout.LayoutParams;
+import android.widget.TextView;
 
+import com.tuenti.buttonmenu.viewmodel.button.ButtonCommand;
+import com.tuenti.buttonmenu.viewmodel.button.ButtonVM;
+import com.tuenti.buttonmenu.viewmodel.button.ButtonWithCounterVM;
 import com.tuenti.buttonmenu.viewmodel.button.ButtonWithProgressVM;
+import com.tuenti.buttonmenu.viewmodel.button.SimpleButtonVM;
+import com.tuenti.buttonmenu.viewmodel.buttonmenu.ButtonMenuVM;
+import com.tuenti.buttonmenu.viewmodel.buttonmenu.OnButtonCommandExecuted;
+import com.tuenti.buttonmenu.viewmodel.buttonmenu.SimpleButtonMenuVM;
+
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -29,23 +38,15 @@ import org.robolectric.Robolectric;
 import org.robolectric.RobolectricTestRunner;
 import org.robolectric.annotation.Config;
 
+import java.util.LinkedList;
+import java.util.List;
+
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.never;
 import static org.mockito.Mockito.verify;
-import android.view.View;
-import android.widget.LinearLayout.LayoutParams;
-import android.widget.TextView;
-
-import com.tuenti.buttonmenu.viewmodel.button.ButtonCommand;
-import com.tuenti.buttonmenu.viewmodel.button.ButtonVM;
-import com.tuenti.buttonmenu.viewmodel.button.ButtonWithCounterVM;
-import com.tuenti.buttonmenu.viewmodel.button.SimpleButtonVM;
-import com.tuenti.buttonmenu.viewmodel.buttonmenu.ButtonMenuVM;
-import com.tuenti.buttonmenu.viewmodel.buttonmenu.OnButtonCommandExecuted;
-import com.tuenti.buttonmenu.viewmodel.buttonmenu.SimpleButtonMenuVM;
 
 /**
  * Test created to check the correctness of ButtonMenu custom view working with ButtonMenuVM implementations.
@@ -57,10 +58,11 @@ import com.tuenti.buttonmenu.viewmodel.buttonmenu.SimpleButtonMenuVM;
 public class ButtonMenuTest {
 
 	private static final int ANY_COUNTER_VALUE = 6;
-	private static final String ANY_SUBJECT_VALUE = "pgomez";
+	private static final double DELTA = 0.01;
 
+	private List<ButtonVM> buttonVMs;
 	private ButtonMenu buttonMenu;
-	private ButtonMenuVM simpleButtonVM;
+	private SimpleButtonMenuVM buttonMenuVM;
 	private ButtonMenuVM buttonMenuVMWithProgress;
 	private ButtonMenuVM buttonMenuVMWithCounter;
 	private ButtonWithCounterVM buttonVMWithCounter;
@@ -70,18 +72,20 @@ public class ButtonMenuTest {
 	private ButtonCommand mockedButtonCommand1;
 	@Mock
 	private ButtonCommand mockedButtonCommand2;
+	@Mock
+	private ButtonCommand mockedButtonCommand3;
 
 	@Before
 	public void setUp() {
 		MockitoAnnotations.initMocks(this);
 		buttonMenu = new ButtonMenu(Robolectric.application);
 
-		List<ButtonVM> buttons = new LinkedList<ButtonVM>();
-		buttons.add(new SimpleButtonVM(android.R.layout.simple_list_item_1, android.R.id.text1,
+		buttonVMs = new LinkedList<ButtonVM>();
+		buttonVMs.add(new SimpleButtonVM(android.R.layout.simple_list_item_1, android.R.id.text1,
 				mockedButtonCommand1));
-		buttons.add(new SimpleButtonVM(android.R.layout.activity_list_item, android.R.id.icon,
+		buttonVMs.add(new SimpleButtonVM(android.R.layout.activity_list_item, android.R.id.icon,
 				mockedButtonCommand2));
-		simpleButtonVM = new SimpleButtonMenuVM(buttons);
+		buttonMenuVM = new SimpleButtonMenuVM(buttonVMs);
 
 		buttonVMWithCounter = new ButtonWithCounterVM(android.R.layout.simple_list_item_1,
 				true, android.R.id.text1, new int[]{android.R.id.text1}, null, ANY_COUNTER_VALUE, android.R.id.text1);
@@ -141,7 +145,7 @@ public class ButtonMenuTest {
 	public void shouldDisableButtonVMs() {
 		initializeButtonMenu();
 
-		simpleButtonVM.disable();
+		buttonMenuVM.disable();
 
 		assertFalse(buttonMenu.findViewById(android.R.id.text1).isEnabled());
 		assertFalse(buttonMenu.findViewById(android.R.id.icon).isEnabled());
@@ -151,8 +155,8 @@ public class ButtonMenuTest {
 	public void shouldEnableButtonMenuVM() {
 		initializeButtonMenu();
 
-		simpleButtonVM.disable();
-		simpleButtonVM.enable();
+		buttonMenuVM.disable();
+		buttonMenuVM.enable();
 
 		assertTrue(buttonMenu.findViewById(android.R.id.text1).isEnabled());
 		assertTrue(buttonMenu.findViewById(android.R.id.icon).isEnabled());
@@ -162,7 +166,7 @@ public class ButtonMenuTest {
 	public void shouldDisableButtonsOneByOne() {
 		initializeButtonMenu();
 
-		for (ButtonVM buttonVM : simpleButtonVM.getButtonVMs()) {
+		for (ButtonVM buttonVM : buttonMenuVM.getButtonVMs()) {
 			buttonVM.disable();
 		}
 
@@ -191,15 +195,45 @@ public class ButtonMenuTest {
 	}
 
 	@Test
-	public void everyChildShouldHaveTheSameWeight() {
+	public void everyChildShouldHaveTheSameWeightWithCorrectSum() {
 		initializeButtonMenu();
 
-		View button1 = buttonMenu.getChildAt(0);
-		View button2 = buttonMenu.getChildAt(1);
+		assertEveryChildHasTheSameWeightWithCorrectSum();
+	}
 
-		float button1Weight = ((LayoutParams) button1.getLayoutParams()).weight;
-		float button2Weight = ((LayoutParams) button2.getLayoutParams()).weight;
-		assertTrue(button1Weight == button2Weight);
+	@Test
+	public void everyChildShouldHaveTheSameWeightWithCorrectSumAfterAddingButton() {
+		initializeButtonMenu();
+
+		buttonMenuVM.addItem(new SimpleButtonVM(android.R.layout.simple_list_item_2,
+				android.R.id.text2, mockedButtonCommand3));
+
+		assertEveryChildHasTheSameWeightWithCorrectSum();
+	}
+
+	@Test
+	public void everyChildShouldHaveTheSameWeightWithCorrectSumAfterRemovingButton() {
+		initializeButtonMenu();
+
+		buttonMenuVM.removeItem(buttonVMs.get(0));
+
+		assertEveryChildHasTheSameWeightWithCorrectSum();
+	}
+
+	private void assertEveryChildHasTheSameWeightWithCorrectSum() {
+		float weightSum = 0;
+		float commonWeight = -1;
+		for (int i = 0; i < buttonMenu.getChildCount(); i++) {
+			View button = buttonMenu.getChildAt(i);
+			float buttonWeight = ((LayoutParams) button.getLayoutParams()).weight;
+			weightSum += buttonWeight;
+			if (commonWeight == -1) {
+				commonWeight = buttonWeight;
+			} else {
+				assertEquals(commonWeight, buttonWeight, DELTA);
+			}
+		}
+		assertEquals(ButtonMenu.WEIGHT_SUM, weightSum, DELTA);
 	}
 
 	@Test
@@ -213,7 +247,7 @@ public class ButtonMenuTest {
 	}
 
 	private void initializeButtonMenu() {
-		initializeButtonMenuWithButtonMenuVM(simpleButtonVM);
+		initializeButtonMenuWithButtonMenuVM(buttonMenuVM);
 	}
 
 	@Test
