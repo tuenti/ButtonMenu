@@ -8,11 +8,11 @@
 			android:layout_width="fill_parent"
 			android:layout_height="fill_parent">
 
-        <Button
-            android:id="@+id/bt_remove_add_button"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/button_text_remove_add_button"/>
+		<Button
+				android:id="@+id/bt_remove_add_button"
+				android:layout_width="match_parent"
+				android:layout_height="wrap_content"
+				android:text="@string/button_text_remove_add_button"/>
 
 		<Button
 				android:id="@+id/bt_enable_disable_all"
@@ -46,11 +46,11 @@
 				android:layout_height="wrap_content"
 				android:text="@string/button_text_start_progress" />
 
-  	</LinearLayout>
+	</LinearLayout>
 
 	<com.tuenti.buttonmenu.ButtonMenu
 			android:id="@+id/button_menu"
-            android:weightSum="555"
+			android:weightSum="555"
 			style="@style/button_menu"/>
 
 </RelativeLayout>
