@@ -31,6 +31,7 @@ public class SecondActivity extends Activity {
 	private final SecondButtonMenuVM buttonMenuVM = new SecondButtonMenuVM(this);
 
 	private ButtonMenu button_menu;
+	private Button bt_remove_add_button;
 	private Button bt_enable_disable_all;
 	private Button bt_enable_disable_photo;
 	private Button bt_change_icon;
@@ -48,6 +49,7 @@ public class SecondActivity extends Activity {
 
 	private void mapGui() {
 		button_menu = (ButtonMenu) findViewById(R.id.button_menu);
+		bt_remove_add_button = (Button) findViewById(R.id.bt_remove_add_button);
 		bt_enable_disable_all = (Button) findViewById(R.id.bt_enable_disable_all);
 		bt_enable_disable_photo = (Button) findViewById(R.id.bt_enable_disable_photo);
 		bt_change_icon = (Button) findViewById(R.id.bt_change_icon);
@@ -61,6 +63,19 @@ public class SecondActivity extends Activity {
 	}
 
 	private void hookListeners() {
+		bt_remove_add_button.setOnClickListener(new OnClickListener() {
+			@Override
+			public void onClick(View v) {
+				/*
+				 * Display or remove just one element inside the ButtonMenuVM implementation.
+				 */
+				if (buttonMenuVM.isMomentButtonInMenu()) {
+					buttonMenuVM.removeMomentButton();
+				} else {
+					buttonMenuVM.addMomentButton();
+				}
+			}
+		});
 		bt_enable_disable_all.setOnClickListener(new OnClickListener() {
 			@Override
 			public void onClick(View v) {

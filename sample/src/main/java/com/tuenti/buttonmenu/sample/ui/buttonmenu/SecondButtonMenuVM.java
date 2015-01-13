@@ -61,6 +61,18 @@ public class SecondButtonMenuVM extends SimpleButtonMenuVM {
 		addItem(loading);
 	}
 
+	public boolean isMomentButtonInMenu() {
+		return getButtonVMs().contains(moment);
+	}
+
+	public void addMomentButton() {
+		addItem(moment);
+	}
+
+	public void removeMomentButton() {
+		removeItem(moment);
+	}
+
 	public boolean isPhotoButtonEnabled() {
 		return photo.isEnabled();
 	}

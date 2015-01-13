@@ -16,12 +16,6 @@
 
 package com.tuenti.buttonmenu;
 
-import java.util.Collection;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Map.Entry;
-import java.util.Set;
-
 import android.annotation.TargetApi;
 import android.content.Context;
 import android.os.Build.VERSION_CODES;
@@ -44,6 +38,12 @@ import com.tuenti.buttonmenu.viewmodel.buttonmenu.ButtonMenuVM;
 import com.tuenti.buttonmenu.viewmodel.buttonmenu.ButtonMenuVM.ButtonMenuVMListener;
 import com.tuenti.buttonmenu.viewmodel.buttonmenu.OnButtonCommandExecuted;
 
+import java.util.Collection;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Map.Entry;
+import java.util.Set;
+
 /**
  * Base custom view created extending LinearLayout. This class works as the core of ButtonMenu library.
  * <p/>
@@ -53,8 +53,8 @@ import com.tuenti.buttonmenu.viewmodel.buttonmenu.OnButtonCommandExecuted;
  */
 public class ButtonMenu extends LinearLayout implements ButtonVMListener, ButtonMenuVMListener {
 
-	private static final int DEFAULT_WEIGHT_SUM = -1;
-	private static final float WEIGHT_SUM = 100.0f;
+	private static final int MIN_WEIGHT_SUM = 0;
+	static final float WEIGHT_SUM = 100.0f;
 
 	private Map<ButtonVM, View> items;
 	private ButtonMenuVM buttonMenuVM;
@@ -115,7 +115,7 @@ public class ButtonMenu extends LinearLayout implements ButtonVMListener, Button
 	/**
 	 * Attach a OnActionCommandExecutedListener to the ButtonMenu.
 	 *
-	 * @param onButtonCommandExecutedListener
+	 * @param onButtonCommandExecutedListener - The OnActionCommandExecutedListener to be attached.
 	 */
 	public void setOnButtonCommandExecutedListener(OnButtonCommandExecuted onButtonCommandExecutedListener) {
 		this.onButtonCommandExecutedListener = onButtonCommandExecutedListener;
@@ -151,11 +151,13 @@ public class ButtonMenu extends LinearLayout implements ButtonVMListener, Button
 	@Override
 	public void onButtonVMAdded(final ButtonVM buttonVM) {
 		add(buttonVM);
+		addItem(buttonVM);
 	}
 
 	@Override
 	public void onButtonVMRemoved(final ButtonVM buttonVM) {
 		remove(buttonVM);
+		removeItem(buttonVM);
 	}
 
 	@Override
@@ -176,12 +178,18 @@ public class ButtonMenu extends LinearLayout implements ButtonVMListener, Button
 		}
 	}
 
-	private void addItem(ButtonVM simpleButtonVM) {
-		View view;
-		if (!items.containsKey(simpleButtonVM)) {
-			view = renderItem(simpleButtonVM);
-			hookActions(view, simpleButtonVM);
-			items.put(simpleButtonVM, view);
+	private void addItem(final ButtonVM buttonVM) {
+		if (!items.containsKey(buttonVM)) {
+			View view = renderItem(buttonVM);
+			hookActions(view, buttonVM);
+			items.put(buttonVM, view);
+			updateWeight();
+		}
+	}
+
+	private void removeItem(final ButtonVM buttonVM) {
+		if (items.containsKey(buttonVM)) {
+			items.remove(buttonVM);
 			updateWeight();
 		}
 	}
@@ -201,7 +209,8 @@ public class ButtonMenu extends LinearLayout implements ButtonVMListener, Button
 	}
 
 	private void initWeightSum() {
-		if (getWeightSum() == DEFAULT_WEIGHT_SUM) {
+		// If the weight is unset or is not valid, we set it.
+		if (getWeightSum() <= MIN_WEIGHT_SUM) {
 			setWeightSum(WEIGHT_SUM);
 		}
 	}
@@ -263,14 +272,14 @@ public class ButtonMenu extends LinearLayout implements ButtonVMListener, Button
 	}
 
 	private void registerButtonVMListener() {
-		for (ButtonVM simpleDropDownVM : items.keySet()) {
-			simpleDropDownVM.registerListener(this);
+		for (ButtonVM buttonVM : items.keySet()) {
+			buttonVM.registerListener(this);
 		}
 	}
 
 	private void unregisterButtonVMListener() {
-		for (ButtonVM simpleDropDownVM : items.keySet()) {
-			simpleDropDownVM.unregisterListener();
+		for (ButtonVM buttonVM : items.keySet()) {
+			buttonVM.unregisterListener();
 		}
 	}
 
