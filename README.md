@@ -19,7 +19,7 @@ Screenshots
 Download
 --------
 
-Download the project, compile it using ``mvn clean install`` import ``buttonmenu-1.0.7.jar`` into your project.
+Download the project, compile it using ``mvn clean install`` import ``buttonmenu-1.0.8.jar`` into your project.
 
 Or declare it into your pom.xml
 
@@ -27,7 +27,7 @@ Or declare it into your pom.xml
 <dependency>
     <groupId>com.tuenti.buttonmenu</groupId>
     <artifactId>library</artifactId>
-    <version>1.0.7</version>
+    <version>1.0.8</version>
 </dependency>
 ```
 
@@ -35,7 +35,7 @@ Or declare it into your pom.xml
 Or into your build.gradle
 ```groovy
 dependencies{
-    compile 'com.tuenti.buttonmenu:library:1.0.7'
+    compile 'com.tuenti.buttonmenu:library:1.0.8'
 }
 ```
 
