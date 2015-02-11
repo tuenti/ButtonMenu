@@ -48,6 +48,7 @@ public class ScrollAnimatorTest {
 	private static final int TOTAL_ITEM_COUNT = 10;
 	private static final int ANY_FIRST_VISIBLE_ITEM = 2;
 	private static final int ANY_VISIBLE_ITEM_COUNT = 3;
+	private static final int ANY_SCROLL_ACTION = 0;
 	private static final int HIDDEN_Y_POSITION = 0;
 	private static final int SHOW_Y_POSITION = ANIMATED_VIEW_HEIGHT;
 
@@ -104,6 +105,17 @@ public class ScrollAnimatorTest {
 	}
 
 	@Test
+	public void shouldNotifyAdditionalScrollListenerOnScrollStateChanged() {
+		OnScrollListener mockedScrollListener = mock(OnScrollListener.class);
+		scrollAnimator.setAdditionalScrollListener(mockedScrollListener);
+		scrollAnimator.configureListView(listView);
+
+		doAnyScrollAction();
+
+		verify(mockedScrollListener).onScrollStateChanged(listView, ANY_SCROLL_ACTION);
+	}
+
+	@Test
 	public void shouldReleaseListViewScrollListener() {
 		scrollAnimator.configureListView(listView);
 
@@ -150,6 +162,12 @@ public class ScrollAnimatorTest {
 		verify(listView).setOnScrollListener(scrollListenerCaptor.capture());
 		scrollListener = scrollListenerCaptor.getValue();
 		scrollListener.onScroll(listView, firstVisibleItem, visibleItemCount, totalItemCount);
+	}
+
+	private void doAnyScrollAction() {
+		verify(listView).setOnScrollListener(scrollListenerCaptor.capture());
+		scrollListener = scrollListenerCaptor.getValue();
+		scrollListener.onScrollStateChanged(listView, ANY_SCROLL_ACTION);
 	}
 
 	private void setUpListView() {
