@@ -94,7 +94,8 @@ public class ScrollAnimator {
 
 			@Override
 			public void onScrollStateChanged(AbsListView view, int scrollState) {
-				//Empty
+				notifyScrollStateChangedToAdditionalScrollListener(view, scrollState);
+
 			}
 		});
 	}
@@ -172,6 +173,12 @@ public class ScrollAnimator {
 			int totalItemCount) {
 		if (additionalScrollListener != null) {
 			additionalScrollListener.onScroll(view, firstVisibleItem, visibleItemCount, totalItemCount);
+		}
+	}
+
+	private void notifyScrollStateChangedToAdditionalScrollListener(AbsListView view, int scrollState) {
+		if (additionalScrollListener != null) {
+			additionalScrollListener.onScrollStateChanged(view, scrollState);
 		}
 	}
 
