@@ -29,15 +29,16 @@
 
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-		<junit.version>4.11</junit.version>
 		<android.version>4.1.1.4</android.version>
-		<robolectric.version>2.3</robolectric.version>
-		<renderers.version>1.1.1</renderers.version>
-		<picasso.version>2.1.1</picasso.version>
-		<circleimageview.version>1.1.1</circleimageview.version>
-		<library.version>2.4.0</library.version>
-		<mockito-all.version>1.9.5</mockito-all.version>
-	</properties>
+    <android-maven-plugin.version>3.9.0-rc.3</android-maven-plugin.version>
+    <junit.version>4.11</junit.version>
+    <robolectric.version>2.3</robolectric.version>
+    <renderers.version>1.1.1</renderers.version>
+    <picasso.version>2.1.1</picasso.version>
+    <circleimageview.version>1.1.1</circleimageview.version>
+    <library.version>2.4.0</library.version>
+    <mockito-all.version>1.9.5</mockito-all.version>
+  </properties>
 
 	<dependencyManagement>
 		<dependencies>
@@ -117,7 +118,7 @@
 				<plugin>
 					<groupId>com.jayway.maven.plugins.android.generation2</groupId>
 					<artifactId>android-maven-plugin</artifactId>
-					<version>3.8.2</version>
+					<version>${android-maven-plugin.version}</version>
 					<configuration>
 						<sdk>
 							<platform>18</platform>
