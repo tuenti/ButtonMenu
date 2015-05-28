@@ -1,4 +1,4 @@
-Button Menu [![Maven Central](https://maven-badges.herokuapp.com/maven-central/com.tuenti.buttonmenu/library/badge.svg)](https://maven-badges.herokuapp.com/maven-central/com.tuenti.buttonmenu/library) [![Android Arsenal](https://img.shields.io/badge/Android%20Arsenal-Button%20Menu-brightgreen.svg?style=flat)](https://android-arsenal.com/details/1/887)
+Button Menu [![Build Status](https://travis-ci.org/tuenti/ButtonMenu.svg?branch=master)](https://travis-ci.org/tuenti/ButtonMenu) [![Maven Central](https://maven-badges.herokuapp.com/maven-central/com.tuenti.buttonmenu/library/badge.svg)](https://maven-badges.herokuapp.com/maven-central/com.tuenti.buttonmenu/library) [![Android Arsenal](https://img.shields.io/badge/Android%20Arsenal-Button%20Menu-brightgreen.svg?style=flat)](https://android-arsenal.com/details/1/887)
 ===========
 
 ButtonMenu is an Android library created to build user interfaces based on buttons. This library has been implemented
